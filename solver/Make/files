@@ -1,0 +1,9 @@
+thermo/thermo.C
+thermo/RDEspecie.C
+thermo/rhoRDEThermo.C
+breakdown/BreakDown.C
+
+Contact.C
+RDE.C
+
+EXE = $(FOAM_USER_APPBIN)/RDE

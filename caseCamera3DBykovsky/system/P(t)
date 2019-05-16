@@ -1,0 +1,61 @@
+/*
+surfaces
+{
+    type            surfaces;
+    libs            ("libsampling.so");
+    //writeControl    writeTime;
+    surfaceFormat   vtk;
+    fields          (p U);
+    interpolationScheme cellPoint;
+
+    surfaces
+    (
+        surfaceP
+        {
+            type            cuttingPlane;
+            planeType       pointAndNormal;
+            pointAndNormalDict
+            {
+                point   (0 0 0.664);
+                normal  (0 0 -1);
+            }
+            interpolate     true;
+        }
+    );
+}
+
+
+fieldAverage
+{
+    type            fieldAverage;
+    libs            ("libfieldFunctionObjects.so");
+    writeControl    writeTime;
+    fields
+    (
+        surfaces
+        {
+            mean        on;
+            prime2Mean  off;
+            base        time;
+        }
+    );
+}
+*/
+
+P(t)
+{
+    type            probes;
+    libs ("libsampling.so");
+    enabled         true;
+    writeControl timeStep;
+    writeInterval  1;
+    probeLocations
+    (
+        (0.14 0.0 0.290)
+    );
+    fields
+    (
+        p T U
+    );
+    //-----------------------------------------
+}

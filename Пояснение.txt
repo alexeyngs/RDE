@@ -1,0 +1,54 @@
+(Для водородо-кислородной смеси как пример)
+molWeight: molWeight0 -> molWeightCJ
+alpha:				0 -> 1
+=> alpha = (molWeight - molWeight0)/(molWeightCJ - molWeight0)
+-----------------------------------------------------------------------
+//				moles0 |moles			|		total
+species
+(
+		CH4		// 0	moleCH4			(1-alpha)*0 + alpha*moleCH4
+		H2		// 2	moleH2			(1-alpha)*2 + alpha*moleH2
+		O2		// 1	moleO2			(1-alpha)*1 + alpha*moleO2
+		N2		// 0	moleN2			(1-alpha)*0 + alpha*moleN2
+		Ar		// 0	moleAr			(1-alpha)*0 + alpha*moleAr
+		H2O		// 0	moleH2O			(1-alpha)*0 + alpha*moleH2O
+		CO2		// 0	moleCO2			(1-alpha)*0 + alpha*moleCO2
+		OH		// 0	moleOH			(1-alpha)*0 + alpha*moleOH
+		H		// 0	moleH			(1-alpha)*0 + alpha*moleH
+		O		// 0	moleO			(1-alpha)*0 + alpha*moleO
+		CO		// 0	moleCO			(1-alpha)*0 + alpha*moleCO
+		H2O2		// 0	moleH2O2		(1-alpha)*0 + alpha*moleH2O2
+);
+"iя компонента смеси"
+{
+    specie
+    {
+		moles 0.0;				// Количество молей
+		molWeight **.0;				// Молекулярная масса
+		Edissociation -*******.**;		// Энергия диссоциации этой смеси
+		...
+    }
+	...
+}
+??? scalar MoleSpecieEquilibrium(this->species()[i], Rho, E) ???
+АЛГОРИТМ:
+-Получение моля компонента через MoleSpecieEquilibrium(this->species()[i], Rho, E)
+-Интерполяция моля через alpha
+-Получение mixture.molWeight_ и mixture.Hchemical_ для конкретной(index) ячейки:
+==============код получения молярной массы и химической энергии=========
+Foam::scalar alpha = (MolWeight - molWeight0)/(molWeightCJ - molWeight0);
+if(alpha < 0.0) alpha = 0.0;
+if(alpha > 1.0) alpha = 1.0;
+mixture.molWeight_ = 0.0;       // молярная масса смеси ячейки
+mixture.Edissociation_ = 0.0;   // энергия диссоцияции ячейки
+Foam::scalar SummaMoles = 0.0;  // суммарное количество молей ячейки
+forAll(this->species(), i)
+{
+		Foam::scalar mole = (1.0-alpha)*this->speciesData()[i].moles() + alpha*MoleSpecieEquilibrium(this->species()[i], Rho, E);
+		SummaMoles += mole;  // Сумма всех молей
+		mixture.molWeight_ += this->speciesData()[i].molWeight_ * mole;
+		mixture.Edissociation_ += this->speciesData()[i].Edissociation_ * mole;
+}
+mixture.molWeight_ /= SummaMoles;
+mixture.Edissociation_ /= SummaMoles;
+mixture.Hchemical_ = mixture.Edissociation_*(1/mixture.molWeight_ - 1/molWeightMin);

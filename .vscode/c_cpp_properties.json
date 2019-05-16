@@ -1,0 +1,33 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "/opt/openfoam6/src/thermophysicalModels/reactionThermo/lnInclude/",
+                "/opt/openfoam6/src/finiteVolume/cfdTools/general/include",
+                "/opt/openfoam6/src/finiteVolume/finiteVolume/ddtSchemes/localEulerDdtScheme",
+                "/opt/openfoam6/src/finiteVolume/lnInclude",
+                "/opt/openfoam6/src/OpenFOAM/lnInclude",
+                "/opt/openfoam6/src/TurbulenceModels/compressible/lnInclude",
+                "/opt/openfoam6/src/TurbulenceModels/turbulenceModels/lnInclude",
+                "/opt/openfoam6/src/thermophysicalModels/basic/lnInclude",
+                "/opt/openfoam6/src/transportModels/compressible/lnInclude",
+                "/opt/openfoam6/src/dynamicMesh/lnInclude",
+                "/opt/openfoam6/src/mesh/blockMesh/lnInclude",
+                "/opt/openfoam6/src/OSspecific/POSIX/lnInclude",
+                "/opt/openfoam6/src/thermophysicalModels/reactionThermo/lnInclude",
+                "/opt/openfoam6/src/thermophysicalModels/specie/lnInclude",
+                "/usr/include/c++/7",
+                "/usr/include/x86_64-linux-gnu/c++/7",
+                "/opt/openfoam5/src/OSspecific/POSIX"
+            ],
+            "defines": [],
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "clang-x64"
+        }
+    ],
+    "version": 4
+}

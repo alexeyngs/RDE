@@ -1,0 +1,3 @@
+module purge
+module load intel/2017.4.196 parallel/mpi.intel.broadwell/2017.4.196 compilers/intel/2017.4.196
+sbatch ./Shell.sh

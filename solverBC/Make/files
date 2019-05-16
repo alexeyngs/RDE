@@ -1,0 +1,23 @@
+boundary.C
+
+inlet/MolWeightInletBoundary.C
+inlet/PInletBoundary.C
+inlet/RhoInletBoundary.C
+inlet/TInletBoundary.C
+inlet/UInletBoundary.C
+
+outlet/MolWeightOutletBoundary.C
+outlet/POutletBoundary.C
+outlet/RhoOutletBoundary.C
+outlet/TOutletBoundary.C
+outlet/UOutletBoundary.C
+
+timeWall/timeWallProcessorCyclicFvPatchFields.C
+timeWall/timeWallProcessorCyclicFvsPatchFields.C
+timeWall/timeWallCyclicFvPatchFields.C
+
+
+LIB = $(FOAM_USER_LIBBIN)/RDElibBC
+
+
+

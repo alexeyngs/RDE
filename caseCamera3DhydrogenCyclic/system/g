@@ -1,0 +1,28 @@
+set terminal wxt size 1600,600 font "arial,18"
+#----------------------------------------------------
+set title "Усредненный удельный расход на входе и на выходе от времени"
+set grid
+set key top right
+
+# X
+set xlabel "t, мсек" font ",18"
+#set xrange [9:19] 
+
+# Y
+set ylabel "g, кг/м2/с" font ",18"
+set format y "%2.2f"
+set yrange [-1:] 
+#set format y '%.0s✕10^{%S}' 
+
+
+set pointsize 2
+set style line 5 lt rgb "cyan" lw 3 pt 6
+set style function linespoints
+set style line 1 linetype 1 linecolor rgb "black"
+
+
+plot	"../postProcessing/averageINLET/0/surfaceFieldValue.dat" using ($1*1000.0):($3*1.0) title "" with lines linetype 1 linecolor "blue" linewidth 2, \
+	"../postProcessing/averageOUTLET/0/surfaceFieldValue.dat" using ($1*1000.0):($3*1.0) title "" with lines linetype 2 linecolor "red" linewidth 2
+
+#pause -1
+pause mouse

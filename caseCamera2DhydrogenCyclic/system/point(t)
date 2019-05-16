@@ -1,0 +1,17 @@
+point
+{
+    type            probes;
+    libs ("libsampling.so");
+    enabled         true;
+    writeControl timeStep;
+    writeInterval  1;
+    probeLocations
+    (
+        (0.14 0.0 0.290)
+    );
+    fields
+    (
+        p T U
+    );
+    //-----------------------------------------
+}

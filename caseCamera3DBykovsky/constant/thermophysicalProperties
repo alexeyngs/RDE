@@ -1,0 +1,215 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2.3.0                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     4.1;
+    format      ascii;
+    class       dictionary;
+    location    "constant";
+    object      thermophysicalProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+
+thermoType
+{
+    type            heRDEThermo;
+    mixture         RDEMixtureNikolaev;
+    transport       const;
+    thermo          RDEThermo;
+    equationOfState perfectGas;
+    specie          RDEspecie;
+    energy          absoluteEnthalpy;
+}
+
+species
+(
+    CH4
+    H2
+    O2
+    N2
+    Ar
+    H2O
+    CO2
+    OH
+);
+// параметры термодинамики
+thermo
+{
+    powerN 1.0;
+    theta 3500;
+    beta 1.5;
+    molWeightCJ 24.01;
+    Kminus 3500.0;
+    StartInduction 900.0;
+    Dcj 1966.0;
+}
+
+// Энергия диссоциации веществ в Дж/моль
+
+CH4
+{
+    specie
+    {
+        moles 0.0;			// Количество молей
+        atoms 5;			// Количество атомов в компоненте
+        decomposition 4;		// На сколько частей(псевдоатомов) разлагается эта смесь
+        molWeight 16.0;			// Молекулярная масса
+        needO 4;			// Количество атомов кислорода, необходимых для полного сжигания этой молекулы
+	Edissociation -570778.0704;	// Энергия диссоциации этой смеси
+        Einduction 139001.76;		// Энергия активации [Дж/моль]
+        Kinduction 6.0e-9;		// Константа активации в моль*с/м3
+    }
+    transport
+    {
+        mu 1.8e-05;
+        Pr 0.7;
+    }
+}
+
+
+H2
+{
+    specie
+    {
+        moles 2.0;
+        atoms 2;
+        decomposition 2;
+        molWeight 2.0;
+        needO 1;
+	Edissociation -432345.7152;
+        Einduction 71803.62;    // Энергия активации [Дж/моль]
+        Kinduction 5.38e-8;     // Константа активации в моль*с/м3
+    }
+    transport
+    {
+        mu 1.8e-05;
+        Pr 0.7;
+    }
+}
+
+O2
+{
+    specie
+    {
+        moles 1.0;
+        atoms 2;
+        decomposition 2;
+        molWeight 32.0;
+        needO 0;
+	Edissociation -493929.3564;
+        Einduction 0.0;    // Энергия активации [Дж/моль]
+        Kinduction 0.0;     // Константа активации в моль*с/м3
+    }
+    transport
+    {
+        mu 1.8e-05;
+        Pr 0.7;
+    }
+}
+
+N2
+{
+    specie
+    {
+        moles 3.7275;
+        atoms 2;
+        decomposition 1;
+        molWeight 28.0;
+        needO 0;
+	Edissociation 0.0;
+        Einduction 0.0;    // Энергия активации [Дж/моль]
+        Kinduction 0.0;     // Константа активации в моль*с/м3
+    }
+    transport
+    {
+        mu 1.8e-05;
+        Pr 0.7;
+    }
+}
+
+Ar
+{
+    specie
+    {
+        moles 0.0445;
+        atoms 1;
+        decomposition 1;
+        molWeight 40.0;
+        needO 0;
+	Edissociation 0.0;
+        Einduction 0.0;    // Энергия активации [Дж/моль]
+        Kinduction 0.0;     // Константа активации в моль*с/м3
+    }
+    transport
+    {
+        mu 1.8e-05;
+        Pr 0.7;
+    }
+}
+
+H2O
+{
+    specie
+    {
+        moles 0.0;
+        atoms 3;
+        decomposition 3;
+        molWeight 36.0;
+	needO 0;
+	Edissociation -918420.6;
+        Einduction 0.0;    // Энергия активации [Дж/моль]
+        Kinduction 0.0;     // Константа активации в моль*с/м3
+    }
+    transport
+    {
+        mu 1.8e-05;
+        Pr 0.7;
+    }
+}
+
+CO2
+{
+    specie
+    {
+        moles 0.0;
+        atoms 3;
+        decomposition 2;
+        molWeight 44.0;
+        needO 0;
+	Edissociation -526502.6604;
+        Einduction 0.0;    // Энергия активации [Дж/моль]
+        Kinduction 0.0;     // Константа активации в моль*с/м3
+    }
+    transport
+    {
+        mu 1.8e-05;
+        Pr 0.7;
+    }
+}
+
+OH
+{
+    specie
+    {
+        moles 0.0;
+        atoms 2;
+        decomposition 2;
+        molWeight 17.0;
+        needO 0;
+	Edissociation -424374.048;
+        Einduction 0.0;    // Энергия активации [Дж/моль]
+        Kinduction 0.0;     // Константа активации в моль*с/м3
+    }
+    transport
+    {
+        mu 1.8e-05;
+        Pr 0.7;
+    }
+}
+

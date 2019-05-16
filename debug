@@ -1,0 +1,9 @@
+
+
+mpirun -np 2 xterm -e gdb --args RDE -parallel
+
+b Foam::processorFvPatchField<Foam::scalar>::initEvaluate
+b Foam::processorFvPatchField<Foam::scalar>::processorFvPatchField
+
+
+b Foam::tmp<Foam::fvPatchField<Foam::scalar>> Foam::fvPatchField<Foam::scalar>::New

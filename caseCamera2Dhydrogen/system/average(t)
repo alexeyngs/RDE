@@ -1,0 +1,60 @@
+averageINLET
+{
+    type            surfaceFieldValue;
+    libs            ("libfieldFunctionObjects.so");
+    log             yes;
+    writeFields     no;
+    regionType      patch;
+    name            inlet;
+    operation       weightedAreaAverage;
+    fields
+    (
+        p g impuls
+    );
+}
+
+
+averageOUTLET
+{
+    type            surfaceFieldValue;
+    libs            ("libfieldFunctionObjects.so");
+    log             yes;
+    writeFields     no;
+    regionType      patch;
+    name            outlet;
+    operation       weightedAreaAverage;
+    fields
+    (
+	p g impuls
+    );
+}
+
+integralINLET
+{
+    type            surfaceFieldValue;
+    libs            ("libfieldFunctionObjects.so");
+    log             yes;
+    writeFields     no;
+    regionType      patch;
+    name            inlet;
+    operation       weightedAreaIntegrate;
+    fields
+    (
+        g impuls
+    );
+}
+
+integralOUTLET
+{
+    type            surfaceFieldValue;
+    libs            ("libfieldFunctionObjects.so");
+    log             yes;
+    writeFields     no;
+    regionType      patch;
+    name            outlet;
+    operation       weightedAreaIntegrate;
+    fields
+    (
+        g impuls
+    );
+}

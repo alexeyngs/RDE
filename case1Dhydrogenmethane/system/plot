@@ -1,0 +1,8 @@
+# Gnuplot script file for plotting data from file "probes.dat"
+set title "Convergence process"
+set xlabel "Iterations"
+set ylabel "Pressure at selected points"
+plot  "postProcessing/probes/0/p" using 1:2 title 'point 1', \
+      "postProcessing/probes/0/p" using 1:3 title 'point 2', \
+      "postProcessing/probes/0/p" using 1:4 title 'point 3'
+pause mouse
